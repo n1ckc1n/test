@@ -5,15 +5,26 @@
 <title>Untitled Document</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
 <script type="text/javascript">    
- function init() {
-Tabletop.init( { key: '2PACX-1vRM6ao5UAu7veXZiDQDHa8aTMJ6mfWnHQqAdfZ7eoeD0vc_x6py5zXPvZkvRzt0PWo-gl0lfoJKaYnV',
-callback: function(data, tabletop) { 
-console.log(data)
-},
-simpleSheet: true } )
-}
-window.addEventListener('DOMContentLoaded', init)
+ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1lhsF9mPwto4m6UpMSvERWUp29Wv8OGKF_E7ZwlDA7kQ/edit?usp=sharing';
 
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    alert('Successfully processed!')
+    console.log(data);
+  }
+
+  window.addEventListener('DOMContentLoaded', init)
+  
+for (var i = 0; i < data.length; i++) {
+$('.post').append(
+  '<div>' + data[i] + '</div>'
+  );
+}
 </script>  
 </head>
 
