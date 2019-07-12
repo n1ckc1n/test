@@ -17,12 +17,10 @@
     alert('Successfully processed!')
     console.log(data);
   }
-
-  window.addEventListener('DOMContentLoaded', init)
   
 for (var i = 0; i < data.length; i++) {
 $('.post').append(
-  '<div>' + data[i] + '</div>'
+  '<p>' + data[i] + '</p>'
   );
 }
 </script>  
