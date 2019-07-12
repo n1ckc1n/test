@@ -1,30 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
-<script type="text/javascript">    
-function init() {
-Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1lhsF9mPwto4m6UpMSvERWUp29Wv8OGKF_E7ZwlDA7kQ/edit?usp=sharing',
-callback: function(data, tabletop) { 
-console.log(data)
-},
-simpleSheet: true } )
-}
-window.addEventListener('DOMContentLoaded', init)
-  
-  for (var i = 0; i < data.length; i++) {
+  <body>
+
+    <p id="books"></p>
+    <div class="post"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+    <script type="text/javascript">
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1lhsF9mPwto4m6UpMSvERWUp29Wv8OGKF_E7ZwlDA7kQ/edit?usp=sharing';
+      function init() {
+        Tabletop.init( { key: public_spreadsheet_url,
+                         callback: showInfo,
+                         simpleSheet: true } );
+      }
+      window.addEventListener('DOMContentLoaded', init)
+      function showInfo(data) {
+        // data comes through as a simple array since simpleSheet is turned on
+        // alert("Successfully processed " + data.length + " rows!")
+        document.getElementById("books").innerHTML = "<strong>Titles:</strong> " + [ data[0].Title, data[1].Title, data[2].Title ].join(", ");
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
 $('.post').append(
   '<p>' + data[i] + '</p>'
   );
 }
-</script>  
-</head>
+      }
+      document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");        
+    </script>
 
-<body>
-
-<div class="post">
-</div>
-</body>
+  </body>
 </html>
